@@ -1,4 +1,7 @@
 <?php
+require_once 'site/configsession.php';
+require_once 'site/bview.php';
+
 
 ?>
 
@@ -20,7 +23,7 @@
         <br>
         <input type="text" name="contactnum" placeholder="Enter your contact number">
         <br>
-        <select class="dropdown" name="service">
+        <select class="dropdown" name="aservice">
             <option value="select" disabled selected value>Select services</option>
             <option value="haircut">Haircut</option>
             <option value="trim">Beard trim</option>
@@ -48,6 +51,10 @@
 
 
     </form>
+    <?php
+    check_errors();
+
+    ?>
     
 </body>
 </html>
