@@ -7,6 +7,12 @@ function showContent(contentId) {
 }
 const dropdowns = document.querySelectorAll('.dropdown');
 
+document.getElementById("my-form").addEventListener("submit", function(event) {
+
+    
+}
+
+
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
     const caret = dropdown.querySelector('.caret');

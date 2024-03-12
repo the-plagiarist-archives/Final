@@ -1,12 +1,12 @@
 <?php
 // Database connection details (replace with your credentials)
-$host = 'finaldb';
+$host = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = "finaldb";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($host, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -70,12 +70,7 @@ $conn->close();
         <div class="container-services">
           <form action="site/barbershop.php" method="post">
           <div class="services">
-          <input type="text" name="fullname" placeholder="Name">
-          <br>
-          <input type="text" name="email" placeholder="Email">
-          <br>
-          <input type="text" name="contactnum" placeholder="Enter your contact number">
-          <br>
+          
             <p>Haircut</p>
             <div class="dropdown" name="service">
               <div class="select">
@@ -88,16 +83,12 @@ $conn->close();
                 <?php endforeach; ?>
               </ul>
             </div>
-            <button onclick="">
+            <button onclick="" type="submit">
               <i class="bx bx-plus"></i>
             </button>
-            <input type="date" name="adate" >
-            <br>
-            <input type="text" name="atime" placeholder="Input your time">
-          <br>
+            
 
-          <textarea name="amessage" placeholder="Enter your message" cols="30" rows="10"></textarea>
-        <br>
+          
           </div>
           <div class="services">
             <p>Beard Trim</p>
@@ -131,8 +122,8 @@ $conn->close();
                   <li>Joshua</li>
                 </ul>
               </div>
-            <button>
-              <i class="bx bx-plus"></i>
+            <button type="submit">
+              <i class="bx bx-plus" ></i>
             </button>
           </div>
           <div class="services">
@@ -194,7 +185,10 @@ $conn->close();
           
         </div>
         <h1>Your Appointment</h1>
-        <div class="container-yourappointment"></div>
+        <div class="container-yourappointment">
+
+        
+        </div>
         <h1>Date and Time</h1>
         <div class="dateandtime"></div>
       </div>

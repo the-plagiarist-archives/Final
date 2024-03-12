@@ -17,24 +17,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         require_once 'bcontr.php';
         
 
-        $errors = [];
-        
-
-        if(is_input_empty($fullname, $email, $contactnum, $aservice, $barber, $adate, $atime, $amessage)){
-            $errors["empty_input"] = "Fill in all fields!";
-
-        }
-        if(email_invalid($email)){
-        $errors["invalid_email"] = "Invalid email!";
-
-        }
-        require_once 'configsession.php';
-
-        if($errors){
-            $_SESSION["errors_barbershop"] = $errors;
-            header("Location: ../index.php");
-            die();
-        }
+    
        create_appointment($pdo, $fullname, $email, $contactnum, $aservice, $barber, $adate, $atime, $amessage);
 
        header("Location: ../index.php?success");

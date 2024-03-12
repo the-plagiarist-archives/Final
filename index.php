@@ -2,6 +2,36 @@
 require_once 'site/configsession.php';
 require_once 'site/bview.php';
 
+// Database connection details (replace with your credentials)
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = "finaldb";
+
+// Create connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to fetch staff names
+$sql = "SELECT staffname FROM staffs";
+$result = $conn->query($sql);
+
+// Array to store staff names
+$staffNames = array();
+
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $staffNames[] = $row['staffname'];
+  }
+}
+
+// Close connection
+$conn->close();
+
 
 ?>
 
@@ -27,18 +57,24 @@ require_once 'site/bview.php';
             <option value="select" disabled selected value>Select services</option>
             <option value="haircut">Haircut</option>
             <option value="trim">Beard trim</option>
+            <option value="shave">Shave</option>
             <option value="ht">Haircut and Beard trim</option>
+            <option value="hs">Haircut and Shave</option>
+            <option value="kid">Kid's Haircut</option>
 
         
         </select>
         <br>
         <select name="barber" class="dropdown">
-            <option value="select" disabled selected value>Choose your Barber</option>
-            <option value="Xylgei">Xylgei</option>
-            <option value="Pete">Pete</option>
-            <option value="Allen">Allen</option>
+            <option value="select" disabled selected value>Select Barber</option>
+        <?php foreach ($staffNames as $staffName) : ?>
+                <option value="$staffName"><?php echo $staffName; ?></option>
+                
+                <?php endforeach; ?>
 
         </select>
+        
+
         <br>
         <input type="date" name="adate" >
         <br>
